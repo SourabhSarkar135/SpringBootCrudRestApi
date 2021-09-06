@@ -65,8 +65,7 @@ public class PocController {
 
 	//Method to create a single record
 	@PostMapping(value=UriConstants.CREATE_RECORD)
-	public ResponseEntity<PocBean> createRecord(
-			@RequestBody PocBean pocBean) {
+	public ResponseEntity<PocBean> createRecord(@RequestBody PocBean pocBean) {
 		try {
 			pocServices.save(pocBean);
 			return new ResponseEntity<>(HttpStatus.CREATED);
