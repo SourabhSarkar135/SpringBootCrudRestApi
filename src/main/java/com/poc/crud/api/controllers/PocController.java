@@ -112,6 +112,18 @@ public class PocController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	//Method to delete multiple records
+	@DeleteMapping(UriConstants.MULTIPLE_RECORD)
+	public ResponseEntity<PocBean> deleteMultipleRecords(@RequestBody List<Long> storeNumbers) {
+		try {	
+			pocServices.deleteMultiple(storeNumbers);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}catch (Exception e) {
+			logger.info("Bad request as " + e.getMessage());
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
 
 	//Method to delete all the records
 	@DeleteMapping(UriConstants.ALL_RECORDS)

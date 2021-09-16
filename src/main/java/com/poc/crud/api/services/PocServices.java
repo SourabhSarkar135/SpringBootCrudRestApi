@@ -44,4 +44,9 @@ public class PocServices {
 		pocRepository.deleteAll();
 	}
 
+	@Transactional
+	public void deleteMultiple(List<Long> storeNumbers) {
+		pocRepository.deleteAllById(storeNumbers);
+	}
+
 }

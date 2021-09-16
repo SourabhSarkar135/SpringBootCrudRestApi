@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS TEST_TABLE_1;
 
 CREATE TABLE TEST_TABLE_1 (
-	Store_Number INT PRIMARY KEY,
-	Delivery_Stream_Number INT,
-	Supplying_DC INT,
-	Start_Date DATE,
+	Store_Number INT NOT NULL PRIMARY KEY,
+	Delivery_Stream_Number INT NOT NULL,
+	Supplying_DC INT NOT NULL,
+	Start_Date DATE NOT NULL,
 	End_Date DATE,
 	Reason_Exclusion VARCHAR(255),
 	Last_Update_By VARCHAR(255),
