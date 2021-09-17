@@ -4,7 +4,8 @@ package com.poc.crud.api.controllers;
  * Date - 01-09-2021
  * 
  */
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +29,7 @@ import com.poc.crud.api.beans.PocBean;
 import com.poc.crud.api.constants.UriConstants;
 import com.poc.crud.api.services.PocServices;
 
-@CrossOrigin(origins = {"http://localhost:3000/", "https://ah-reactpoc-react.azurewebsites.net"})
+@CrossOrigin(origins = {"http://localhost:3000/", "https://ah-reactpoc-react.azurewebsites.net", "https://reactadmin-pic.azurewebsites.net"})
 @RestController
 @RequestMapping(value = UriConstants.API_VERSION_1)
 public class PocController {
@@ -80,21 +81,21 @@ public class PocController {
 	//Method to update a single record
 	@PutMapping(UriConstants.SINGLE_RECORD)
 	public ResponseEntity<PocBean> updateRecord(
-			@PathVariable("storeNumber") Long storeNumber, @RequestBody PocBean pocBean) {
-		Optional<PocBean> rec = Optional.ofNullable(pocServices.findByStoreNumber(storeNumber));
+			@PathVariable("id") Long id, @RequestBody PocBean pocBean) {
+		Optional<PocBean> rec = pocServices.findById(id);
 		if (rec.isPresent()) {
 			PocBean updatedRec = rec.get();
-			updatedRec.setStoreNumber(storeNumber);
+			updatedRec.setStoreNumber(pocBean.getStoreNumber());
 			updatedRec.setDeliveryStreamNumber(pocBean.getDeliveryStreamNumber());
 			updatedRec.setSupplyingDc(pocBean.getSupplyingDc());
 			updatedRec.setStartDate(pocBean.getStartDate());
 			updatedRec.setEndDate(pocBean.getEndDate());
 			updatedRec.setReasonExclusion(pocBean.getReasonExclusion());
 			updatedRec.setLastUpdateBy("SYSTEM");
-			updatedRec.setLastUpdateTime(LocalDate.now());
+			updatedRec.setLastUpdateTime(LocalDateTime.now());
 			return new ResponseEntity<>(pocServices.save(updatedRec), HttpStatus.OK);
 		} else {
-			logger.info("Couldn't find the record in database with Store Number - " + storeNumber);
+			logger.info("Couldn't find the record in database with Store Number - " + pocBean.getStoreNumber());
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
@@ -115,9 +116,9 @@ public class PocController {
 	
 	//Method to delete multiple records
 	@DeleteMapping(UriConstants.MULTIPLE_RECORD)
-	public ResponseEntity<PocBean> deleteMultipleRecords(@RequestBody List<Long> storeNumbers) {
+	public ResponseEntity<PocBean> deleteMultipleRecords(@RequestBody List<Long> ids) {
 		try {	
-			pocServices.deleteMultiple(storeNumbers);
+			pocServices.deleteMultiple(ids);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}catch (Exception e) {
 			logger.info("Bad request as " + e.getMessage());

@@ -1,20 +1,26 @@
 package com.poc.crud.api.beans;
+
 /**
  * @author Sourabh Sarkar
  * Date - 01-09-2021
  * 
  */
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TEST_TABLE_1")
 public class PocBean {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private Long storeNumber;
 	private Long deliveryStreamNumber;
 	private Double supplyingDc;
@@ -22,14 +28,15 @@ public class PocBean {
 	private LocalDate endDate;
 	private String reasonExclusion;
 	private String lastUpdateBy;
-	private LocalDate lastUpdateTime;
-	
+	private LocalDateTime lastUpdateTime;
+
 	public PocBean() {
-		
+
 	}
 
-	public PocBean(Long storeNumber, Long deliveryStreamNumber, Double supplyingDc, LocalDate startDate,
-			LocalDate endDate, String reasonExclusion, String lastUpdateBy, LocalDate lastUpdateTime) {
+	public PocBean(Long id, Long storeNumber, Long deliveryStreamNumber, Double supplyingDc, LocalDate startDate,
+			LocalDate endDate, String reasonExclusion, String lastUpdateBy, LocalDateTime lastUpdateTime) {
+		this.id = id;
 		this.storeNumber = storeNumber;
 		this.deliveryStreamNumber = deliveryStreamNumber;
 		this.supplyingDc = supplyingDc;
@@ -40,7 +47,13 @@ public class PocBean {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Long getStoreNumber() {
 		return storeNumber;
@@ -98,12 +111,12 @@ public class PocBean {
 		this.lastUpdateBy = lastUpdateBy;
 	}
 
-	public LocalDate getLastUpdateTime() {
+	public LocalDateTime getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(LocalDate lastUpdateTime) {
+	public void setLastUpdateTime(LocalDateTime lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
-	
+
 }

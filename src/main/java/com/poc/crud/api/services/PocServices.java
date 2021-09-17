@@ -5,6 +5,7 @@ package com.poc.crud.api.services;
  * 
  */
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class PocServices {
 	public PocBean findByStoreNumber(Long storeNumber) {
 		return pocRepository.findByStoreNumber(storeNumber);
 	}
+	
+	@Transactional
+	public Optional<PocBean> findById(Long id) {
+		return pocRepository.findById(id);
+	}
 
 	@Transactional
 	public PocBean save(PocBean sccStoreExclusion) {
@@ -45,8 +51,8 @@ public class PocServices {
 	}
 
 	@Transactional
-	public void deleteMultiple(List<Long> storeNumbers) {
-		pocRepository.deleteAllById(storeNumbers);
+	public void deleteMultiple(List<Long> ids) {
+		pocRepository.deleteAllById(ids);
 	}
 
 }
