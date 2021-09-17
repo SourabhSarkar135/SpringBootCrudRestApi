@@ -1,5 +1,9 @@
 package com.poc.crud.api.beans;
-
+/**
+ * @author Sourabh Sarkar
+ * Date - 01-09-2021
+ * 
+ */
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -13,7 +17,7 @@ public class PocBean {
 	@Id
 	private Long storeNumber;
 	private Long deliveryStreamNumber;
-	private Long supplyingDc;
+	private Double supplyingDc;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private String reasonExclusion;
@@ -24,7 +28,7 @@ public class PocBean {
 		
 	}
 
-	public PocBean(Long storeNumber, Long deliveryStreamNumber, Long supplyingDc, LocalDate startDate,
+	public PocBean(Long storeNumber, Long deliveryStreamNumber, Double supplyingDc, LocalDate startDate,
 			LocalDate endDate, String reasonExclusion, String lastUpdateBy, LocalDate lastUpdateTime) {
 		this.storeNumber = storeNumber;
 		this.deliveryStreamNumber = deliveryStreamNumber;
@@ -54,11 +58,11 @@ public class PocBean {
 		this.deliveryStreamNumber = deliveryStreamNumber;
 	}
 
-	public Long getSupplyingDc() {
+	public Double getSupplyingDc() {
 		return supplyingDc;
 	}
 
-	public void setSupplyingDc(Long supplyingDc) {
+	public void setSupplyingDc(Double supplyingDc) {
 		this.supplyingDc = supplyingDc;
 	}
 
