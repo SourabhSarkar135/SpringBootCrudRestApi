@@ -29,7 +29,7 @@ import com.poc.crud.api.beans.PocBean;
 import com.poc.crud.api.constants.UriConstants;
 import com.poc.crud.api.services.PocServices;
 
-@CrossOrigin(origins = {"http://localhost:3000/", "https://ah-reactpoc-react.azurewebsites.net", "https://reactadmin-pic.azurewebsites.net"})
+@CrossOrigin(origins = {"http://localhost:3000/", "https://ah-reactpoc-react.azurewebsites.net", "https://reactadmin-poc.azurewebsites.net"})
 @RestController
 @RequestMapping(value = UriConstants.API_VERSION_1)
 public class PocController {
