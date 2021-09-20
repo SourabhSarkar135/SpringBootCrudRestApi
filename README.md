@@ -2,8 +2,8 @@
 
 maven build command - **mvn clean install**
 
-API List
---------
+API Endpoint List
+-----------------
 To fetch all the records  - http://localhost:8080/api/v1/records (HTTP Method - GET) <br />
 To fetch only one record  - http://localhost:8080/api/v1/record/storeNumber (HTTP Method - GET) <br />
 To create a new record    - http://localhost:8080/api/v1/records (HTTP Method - POST) <br />
