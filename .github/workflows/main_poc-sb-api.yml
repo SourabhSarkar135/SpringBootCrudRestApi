@@ -50,4 +50,4 @@ jobs:
         app-name: 'poc-sb-api'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_6a40094cb327433891e35e3cca80b1ed }}
-        package: '*.war'
+        package: '*.jar'
