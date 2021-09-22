@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - poc-sb-api
+name: Build and deploy JAR app to Azure Web App - poc-sb-api
 
 on:
   push:
@@ -49,5 +49,5 @@ jobs:
       with:
         app-name: 'poc-sb-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6a40094cb327433891e35e3cca80b1ed }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_35335a6f399c47c49c58681dccdc2ae8 }}
         package: '*.jar'
