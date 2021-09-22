@@ -103,8 +103,8 @@ public class PocController {
 	//Method to delete a single record
 	@DeleteMapping(UriConstants.SINGLE_RECORD)
 	public ResponseEntity<PocBean> deleteRecord(
-			@PathVariable("storeNumber") Long storeNumber) {
-		Optional<PocBean> rec = Optional.ofNullable(pocServices.findByStoreNumber(storeNumber));
+			@PathVariable("id") Long id) {
+		Optional<PocBean> rec = pocServices.findById(id);
 		try {
 			pocServices.delete(rec.get());
 			return new ResponseEntity<>(HttpStatus.OK);
